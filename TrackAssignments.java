@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import javax.lang.model.util.ElementScanner6;
 import javax.sound.sampled.SourceDataLine;
 
-
 class Assignment {
-
   protected LocalDate dueDate;
   protected String description;
   protected boolean pending;
@@ -46,39 +44,30 @@ class Assignment {
           return "late";
       }
       return "due in" + daysLeft() + "days";
-
   }
 
 
   public String message() {
-    return "Assignment " + this.description + " is " + status();
-    
+    return "Assignment " + this.description + " is " + status(); 
   }
 
   public String toString(){
     return "{ dueDate = " + this.dueDate + ", description = " + this.description + 
     ", pending = " + this.pending + ", submitDate = " + submitDate + " }";
   }
-
-  
-
 }
-
 
 class GroupAssignment extends Assignment {
     private String teamMates;
   
     public String message() {
       return "Group " + super.message() + " - call " + this.teamMates;
-    
     }
   
     public GroupAssignment(LocalDate dueDate, String description, String teamMates) {
       super(dueDate, description);
       this.teamMates = teamMates;
-    }
-  
-    
+    } 
   }
 
  public class TrackAssignments {
@@ -112,17 +101,14 @@ class GroupAssignment extends Assignment {
       for (Assignment item : list) {
         System.out.println(item.message());
       }
-  
-      // COMPLETE-ME: count completed assignments
+
       int aux = 0;
       for (Assignment item : list) {
-   
         if(item.isPending() == false){
             aux = aux + 1;
         }
       }
       System.out.println("Assignments not pending = " + aux);
-
     }
     
   }
